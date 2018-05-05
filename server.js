@@ -1,5 +1,5 @@
-
 var fs = require('fs');
+let TelegramToken = "";
 
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
