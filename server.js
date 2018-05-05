@@ -1,66 +1,11 @@
-/*NDI3NDY0MDk0Mjg3NjU5MDE4.DZk67w.17WdZ0oSeMHqqG2K-DkY3dVJh4E    discord token*/
-/*522591856:AAHn4kMK_d8i2-8yVLjywuNgslXYEJN-g5I telebot token*/
+
 var fs = require('fs');
 
-/*
-var fs = require('fs'),
-    files = fs.readdirSync('./letters'),
-    clips = [],
-    stream,
-    currentfile,
-    dhh = fs.createWriteStream('./output.wav');
-// create an array with filenames (time)
-files.forEach(function (file) {
-    clips.push(file.substring(0, 6));
-});
-// Sort
-clips.sort(function (a, b) {
-    return a - b;
-});
-// recursive function
-function main() {
-    if (!clips.length) {
-        dhh.end("Done");
-        return;
-    }
-    currentfile = './letters/' + clips.shift();
-    stream = fs.createReadStream(currentfile);
-    stream.pipe(dhh, {end: false});
-    stream.on("end", function() {
-        console.log(currentfile + ' appended');
-        main();
-    });
-}
-main();
-*/
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 var audioconcat = require('audioconcat');
-/*
-let string = "абба";
-let letters = [];
-for (let i = 0; i < string.length; i++){
-  letters.push('./letters/'+string[i] + '.mp3');
-}
-console.log(letters);
-
-audioconcat(letters)
-  .concat('word.mp3')
-  .on('start', function (command) {
-    console.log('ffmpeg process started:', command)
-  })
-  .on('error', function (err, stdout, stderr) {
-    console.error('Error:', err)
-    console.error('ffmpeg stderr:', stderr)
-  })
-  .on('end', function (output) {
-    console.error('Audio created in:', output)
-  })
-*/
-
-
 
 const TeleBot = require('telebot');
 const bot = new TeleBot(TelegramToken);
@@ -85,22 +30,6 @@ const request = require('request');
 let users = new Map();
 
 let deff = false;
-users.set('1', {
-  sticker: '🏳️‍🌈',
-  name: '1'
-}); // pitt 🌈
-users.set('2', {
-  sticker: '🇺🇦',
-  name: '2'
-}); // nazar
-users.set('3', {
-  sticker: '🇺🇦‍',
-  name: '3'
-}); // pawa
-users.set('4', {
-  sticker: '🐖‍',
-  name: '4'
-}); // vitalik
 
 let queue = [];
 let change_next = true;
@@ -108,20 +37,15 @@ let change_next = true;
 
 let sounds = "**кот** [*звук*]\n:arrow_forward: **гав**\n:arrow_forward: **датинаглий**\n:arrow_forward: **мяу**\n:arrow_forward: **мяууу**\n:arrow_forward: **плизду**\n:arrow_forward: **ррр**\n:arrow_forward: **соси**\n:arrow_forward: **булочки**\n:arrow_forward: **уи**\n:arrow_forward: **ха** \n:arrow_forward: **хук** \n:arrow_forward: **шрифт**";
 
-//let channel =  client.servers.get("name", "✡☭Лала☭ϟϟ✡").defaultChannel;
 let prev_author;
 bot.on('text', function(msg) {
-  //client.sendMessage('427474848562806794', msg.text);
   if (msg.chat.id == telegram_channel_id) {
-    //console.log(msg.from.first_name);
     if (prev_author != msg.from.first_name) {
       client.channels.get('427474848562806794').send('-');
     }
     client.channels.get('427474848562806794').send('**' + msg.from.first_name + '**: ' + msg.text);
     prev_author = msg.from.first_name;
   }
-  //client.sendMessage(channel, msg.text);
-  //msg.reply.text(msg.text+' сосав хуй');
 });
 
 bot.on('photo', function(msg) {
@@ -363,12 +287,6 @@ client.on('message', async  msg => {
 
   }
 
-  //msg.reply('/tts хуй хуй');
-  //console.log(msg.attachments);
-  //console.log(msg.attachments.get(Array.from( msg.attachments.keys() )[0]).url);
-  //console.log(msg.attachments.get(Array.from( msg.attachments.keys() )[0]) == undefined);
-  //console.log(msg);
-  //console.log(msg);
 });
 
 
